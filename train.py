@@ -53,13 +53,13 @@ def train(batch, epochs, size):
     lr = ReduceLROnPlateau(monitor='loss', min_lr=1e-7)
 
     indices = list(range(1500))
-    train, test = train_test_split(indices, test_size=0.25)
+    train_ids, test_ids = train_test_split(indices, test_size=0.25)
 
     hist = model.fit_generator(
-        generator(train, batch, size),
-        validation_data=generator(test, batch, size),
-        steps_per_epoch=len(train) // batch,
-        validation_steps=len(test) // batch,
+        generator(train_ids, batch, size),
+        validation_data=generator(test_ids, batch, size),
+        steps_per_epoch=len(train_ids) // batch,
+        validation_steps=len(test_ids) // batch,
         epochs=epochs,
         callbacks=[lr])
 

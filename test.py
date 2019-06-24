@@ -38,5 +38,5 @@ if __name__ == '__main__':
     dmap = model.predict(img)[0][:, :, 0]
     dmap = cv2.GaussianBlur(dmap, (15, 15), 0)
 
-    visualization(img[0], dmap)
+    visualization(img[0], np.expand_dims(dmap, axis=-1))
     print('count:', int(np.sum(dmap)))

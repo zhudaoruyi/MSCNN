@@ -10,11 +10,11 @@ A Python 3 and Keras 2 implementation of MSCNN for people countingand provide tr
 ## MSCNN and MSB architectures
 **MSCNN**  
 
-![MSCNN](/images/mscnn.png)
+![MSCNN](images/mscnn.png)
 
 **MSB**  
 
-![MSB](/images/msb.png)
+![MSB](images/msb.png)
 
 ## Experiment
 
@@ -24,7 +24,7 @@ A Python 3 and Keras 2 implementation of MSCNN for people countingand provide tr
 
 Generate density_map from data:
 
-![density map](/images/density_map.png)
+![density map](images/density_map.png)
 
 **train**
 
@@ -38,7 +38,7 @@ python train.py --size 224 --batch 16 --epochs 100
 real count:30
 pred count:27
 ```
-![res](/images/res1.png)
+![res](images/res1.png)
 
 ## Reference
 
@@ -52,4 +52,4 @@ pred count:27
 
 ## Copyright
 See [LICENSE](LICENSE) for details.
- 
+

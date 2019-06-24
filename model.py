@@ -16,7 +16,7 @@ def MSB(filters):
     Returns:
         f: function, layer func.
     """
-    params = {'activation': 'relu', 'padding': 'same',
+    params = {'activation': 'elu', 'padding': 'same',
               'kernel_regularizer': l2(5e-4)}
 
     def f(x):
@@ -26,7 +26,7 @@ def MSB(filters):
         x4 = Conv2D(filters, 3, **params)(x)
         x = concatenate([x1, x2, x3, x4])
         x = BatchNormalization()(x)
-        x = Activation('relu')(x)
+        x = Activation('elu')(x)
 
         return x
     return f
@@ -43,7 +43,7 @@ def MSCNN(input_shape):
     """
     inputs = Input(shape=input_shape)
 
-    x = Conv2D(64, 9, activation='relu', padding='same')(inputs)
+    x = Conv2D(64, 9, activation='elu', padding='same')(inputs)
     x = MSB(4 * 16)(x)
     x = MaxPooling2D()(x)
     x = MSB(4 * 32)(x)
@@ -51,8 +51,8 @@ def MSCNN(input_shape):
     x = MaxPooling2D()(x)
     x = MSB(3 * 64)(x)
     x = MSB(3 * 64)(x)
-    x = Conv2D(1000, 1, activation='relu', kernel_regularizer=l2(5e-4))(x)
-    x = Conv2D(1, 1, activation='relu')(x)
+    x = Conv2D(1000, 1, activation='elu', kernel_regularizer=l2(5e-4))(x)
+    x = Conv2D(1, 1, activation='elu')(x)
 
     model = Model(inputs=inputs, outputs=x)
 
